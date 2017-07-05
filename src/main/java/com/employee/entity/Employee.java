@@ -34,4 +34,10 @@ public class Employee {
 	public void setEmpName(String empName) {
 		this.empName = empName;
 	}
+
+	@Override
+	public String toString() {
+		return "Employee [empId=" + empId + ", empName=" + empName + "]";
+	}
+	
 }

@@ -6,6 +6,8 @@ import io.swagger.annotations.Api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,9 +23,9 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeServiceImpl employeeServiceImpl;
 
-	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, value = "/get/{empId}/empId")
+	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, value = "/get/{empId}/id")
 	@ResponseBody
-	public List<Employee> getEmployeeById(int empId) {
+	public Employee getEmployeeById(@PathVariable int empId) {
 		return employeeServiceImpl.findEmployeeById(empId);
 	}
 
@@ -35,13 +37,13 @@ public class EmployeeController {
 
 	@RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, value = "/updateEmployee")
 	@ResponseBody
-	public Employee updateEmployee(Employee employee) {
+	public Employee updateEmployee(@RequestBody Employee employee) {
 		return employeeServiceImpl.updateEmployee(employee);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, value = "/deleteEmployee/{empId}")
 	@ResponseBody
-	public Employee deleteEmployee(int empId) {
+	public Employee deleteEmployee(@PathVariable int empId) {
 		return employeeServiceImpl.deleteEmployee(empId);
 
 	}

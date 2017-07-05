@@ -16,7 +16,7 @@ public class EmployeeServiceImpl {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 
-	public List<Employee> findEmployeeById(int empId) {
+	public Employee findEmployeeById(int empId) {
 		return employeeRepository.findByEmpId(empId);
 	}
 

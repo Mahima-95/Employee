@@ -8,7 +8,7 @@ import com.employee.entity.Employee;
 
 public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
 
-	List<Employee> findByEmpId(int empId);
+	Employee findByEmpId(int empId);
 
 	List<Employee> findByEmpNameAndEmpId(String empName, int empId);
 
