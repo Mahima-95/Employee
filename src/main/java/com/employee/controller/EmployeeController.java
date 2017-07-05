@@ -29,7 +29,7 @@ public class EmployeeController {
 
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, value = "/addEmployee")
 	@ResponseBody
-	public Employee addEmployee(Employee employee) {
+	public Employee addEmployee(@RequestBody Employee employee) {
 		return employeeServiceImpl.addEmployee(employee);
 	}
 
