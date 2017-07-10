@@ -11,8 +11,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-//no need to use this query for @Query annotation right now
-//@NamedQuery(name = "Employee.findByName", query = "SELECT p FROM Employee p WHERE LOWER(p.empName) = LOWER(?1)")
+// no need to use this query for @Query annotation right now
+// @NamedQuery(name = "Employee.findByName", query =
+// "SELECT p FROM Employee p WHERE LOWER(p.empName) = LOWER(?1)")
 @Table(name = "emp")
 public class Employee {
 
@@ -24,17 +25,15 @@ public class Employee {
 	@Column(name = "emp_name")
 	private String empName;
 
-	@ManyToOne
-	@JoinColumn(name = "manager_id")
-	private Manager manager;
-
-	public Manager getManager() {
-		return manager;
-	}
-
-	public void setManager(Manager manager) {
-		this.manager = manager;
-	}
+	/*
+	 * @ManyToOne
+	 * 
+	 * @JoinColumn(name = "manager_id") private Manager manager;
+	 * 
+	 * public Manager getManager() { return manager; }
+	 * 
+	 * public void setManager(Manager manager) { this.manager = manager; }
+	 */
 
 	public int getEmpId() {
 		return empId;
@@ -54,8 +53,8 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [empId=" + empId + ", empName=" + empName
-				+ ", manager=" + manager + "]";
+		return "Employee [empId=" + empId + ", empName=" + empName + "]";
 	}
 
 }
+// https://www.petrikainulainen.net/programming/spring-framework/spring-data-jpa-tutorial-three-custom-queries-with-query-methods/
