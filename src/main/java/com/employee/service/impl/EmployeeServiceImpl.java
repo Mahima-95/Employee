@@ -48,4 +48,8 @@ public class EmployeeServiceImpl {
 			return new Employee();
 		}
 	}
+
+	public List<Employee> findByName(String empName) {
+		return employeeRepository.find(empName);
+	}
 }

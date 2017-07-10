@@ -5,10 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Table(name = "emp")
 @Entity
+//no need to use this query for @Query annotation right now
+//@NamedQuery(name = "Employee.findByName", query = "SELECT p FROM Employee p WHERE LOWER(p.empName) = LOWER(?1)")
+@Table(name = "emp")
 public class Employee {
 
 	@Id
@@ -18,6 +23,18 @@ public class Employee {
 
 	@Column(name = "emp_name")
 	private String empName;
+
+	@ManyToOne
+	@JoinColumn(name = "manager_id")
+	private Manager manager;
+
+	public Manager getManager() {
+		return manager;
+	}
+
+	public void setManager(Manager manager) {
+		this.manager = manager;
+	}
 
 	public int getEmpId() {
 		return empId;
@@ -37,7 +54,8 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [empId=" + empId + ", empName=" + empName + "]";
+		return "Employee [empId=" + empId + ", empName=" + empName
+				+ ", manager=" + manager + "]";
 	}
-	
+
 }

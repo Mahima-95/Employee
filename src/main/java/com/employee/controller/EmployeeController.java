@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +18,7 @@ import com.employee.entity.Employee;
 import com.employee.service.impl.EmployeeServiceImpl;
 
 @RestController
-@RequestMapping("/emp")
+@RequestMapping("/api/emp")
 @Api(basePath = "/employee", value = "employee", description = "Operations with Landlords", produces = "application/json")
 public class EmployeeController {
 	@Autowired
@@ -45,6 +46,12 @@ public class EmployeeController {
 	@ResponseBody
 	public Employee deleteEmployee(@PathVariable int empId) {
 		return employeeServiceImpl.deleteEmployee(empId);
+	}
 
+	//to find name by using @Query annotation
+	@RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, value = "/getName")
+	@ResponseBody
+	public List<Employee> findByName(@RequestParam String empName) {
+		return employeeServiceImpl.findByName(empName);
 	}
 }
