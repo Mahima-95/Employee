@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.employee.entity.Managers;
 import com.employee.service.impl.ManagerServiceImpl;
 
@@ -34,4 +35,11 @@ public class ManagerController {
 	public Managers getEmployeeById(@PathVariable int managerID) {
 		return managerServiceImpl.findByManagerID(managerID);
 	}
+	
+	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, value = "/addManager")
+	@ResponseBody
+	public Managers addEmployee(@RequestBody Managers managers) {
+		return managerServiceImpl.addManager(managers);
+	}
+
 }

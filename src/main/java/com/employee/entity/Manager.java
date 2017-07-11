@@ -1,4 +1,4 @@
-package com.employee.entity;
+/*package com.employee.entity;
 
 import java.util.Set;
 
@@ -69,3 +69,4 @@ public class Manager {
 	}
 
 }
+*/

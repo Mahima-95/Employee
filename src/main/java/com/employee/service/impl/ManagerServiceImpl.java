@@ -22,4 +22,8 @@ public class ManagerServiceImpl {
 	public Managers findByManagerID(int managerID) {
 		return managerRepository.findByManagerID(managerID);
 	}
+	
+	public Managers addManager(Managers managers) {
+		return managerRepository.save(managers);
+	}
 }

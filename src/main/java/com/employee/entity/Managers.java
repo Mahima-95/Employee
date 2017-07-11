@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 @Entity
 @Table(name = "man")
 public class Managers {
@@ -24,10 +25,10 @@ public class Managers {
 	@Column(name = "manager_address")
 	private String managerAddress;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "emp_id", referencedColumnName = "emp_id", insertable = false, updatable = false)
 	private Employee employees;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "emp_id")
 	public Employee getEmployees() {
 		return employees;
 	}
@@ -58,6 +59,14 @@ public class Managers {
 
 	public void setManagerAddress(String managerAddress) {
 		this.managerAddress = managerAddress;
+	}
+
+	public Managers(String managerName, String managerAddress,
+			Employee employees) {
+		super();
+		this.managerName = managerName;
+		this.managerAddress = managerAddress;
+		this.employees = employees;
 	}
 
 	@Override

@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,13 +27,12 @@ public class Employee {
 	private String empName;
 
 	/*
-	 * @ManyToOne
+	 * private Managers managers;
 	 * 
-	 * @JoinColumn(name = "manager_id") private Manager manager;
+	 * @OneToOne(mappedBy = "manager_id") public Managers getManagers() { return
+	 * managers; }
 	 * 
-	 * public Manager getManager() { return manager; }
-	 * 
-	 * public void setManager(Manager manager) { this.manager = manager; }
+	 * public void setManagers(Managers managers) { this.managers = managers; }
 	 */
 
 	public int getEmpId() {
@@ -48,6 +48,15 @@ public class Employee {
 	}
 
 	public void setEmpName(String empName) {
+		this.empName = empName;
+	}
+
+	public Employee() {
+		super();
+	}
+
+	public Employee(String empName) {
+		super();
 		this.empName = empName;
 	}
 
