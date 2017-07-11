@@ -54,4 +54,12 @@ public class EmployeeController {
 	public List<Employee> findByName(@RequestParam String empName) {
 		return employeeServiceImpl.findByName(empName);
 	}
-}
+	
+	/*@ResponseStatus( value = HttpStatus.BAD_REQUEST ) 
+	public class BadRequestException extends RuntimeException{
+		
+		} 
+	@ResponseStatus( value = HttpStatus.NOT_FOUND ) public class ResourceNotFoundException extends RuntimeException{ 
+			
+			} */
+	}
