@@ -4,13 +4,10 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.employee.entity.Employee;
-import com.employee.entity.Managers;
+import com.employee.entity.Manager;
 
-public interface ManagerRepository extends CrudRepository<Managers, Integer> {
+public interface ManagerRepository extends CrudRepository<Manager, Integer> {
 
-	List<Managers> findByEmployees(Managers manager1);
-	
-	Managers findByManagerID(int managerID);
-	
+	List<Manager> findByEmployeeId(Integer id);
+
 }

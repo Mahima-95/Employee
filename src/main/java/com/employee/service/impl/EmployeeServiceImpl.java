@@ -17,22 +17,22 @@ public class EmployeeServiceImpl {
 	private EmployeeRepository employeeRepository;
 
 	public Employee findEmployeeById(int empId) {
-		return employeeRepository.findByEmpId(empId);
+		return employeeRepository.findOne(empId);
 	}
 
-	public List<Employee> findEmployeeByNameAndId(String empName, int empId) {
+	/*public List<Employee> findEmployeeByNameAndId(String empName, int empId) {
 		return employeeRepository.findByEmpNameAndEmpId(empName, empId);
-	}
+	}*/
 
 	public Employee addEmployee(Employee employee) {
 		return employeeRepository.save(employee);
 	}
 
 	public Employee updateEmployee(Employee employee) {
-		Employee tempEmployee = employeeRepository.findOne(employee.getEmpId());
-		if (tempEmployee != null && employee.getEmpName() != null) {
-			tempEmployee.setEmpId(employee.getEmpId());
-			tempEmployee.setEmpName(employee.getEmpName());
+		Employee tempEmployee = employeeRepository.findOne(employee.getEmployeeId());
+		if (tempEmployee != null && employee.getEmployeeName() != null) {
+			tempEmployee.setEmployeeId(employee.getEmployeeId());
+			tempEmployee.setEmployeeName(employee.getEmployeeName());
 			return employeeRepository.save(tempEmployee);
 		} else {
 			return new Employee();
@@ -49,7 +49,7 @@ public class EmployeeServiceImpl {
 		}
 	}
 
-	public List<Employee> findByName(String empName) {
-		return employeeRepository.find(empName);
+	public List<Employee> findByName(String employeeName) {
+		return employeeRepository.findByEmployeeName(employeeName);
 	}
 }

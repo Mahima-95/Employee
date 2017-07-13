@@ -1,6 +1,4 @@
-/*package com.employee.entity;
-
-import java.util.Set;
+package com.employee.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,11 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Table(name = "manager")
 @Entity
+@Table(name = "manager")
 public class Manager {
 
 	@Id
@@ -20,22 +19,21 @@ public class Manager {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int managerID;
 
+	@Column(name = "employee_Id")
+	private Integer employeeId;
+
 	@Column(name = "manager_name")
 	private String managerName;
 
 	@Column(name = "manager_address")
 	private String managerAddress;
 
-	@OneToMany(mappedBy = "manager", cascade = CascadeType.ALL)
-	Set<Employee> employees;
+	@Column(name = "manager_age")
+	private String managerAge;
 
-	public Set<Employee> getEmployees() {
-		return employees;
-	}
-
-	public void setEmployees(Set<Employee> employees) {
-		this.employees = employees;
-	}
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "employee_id", referencedColumnName = "employee_Id", updatable = false, insertable = false)
+	private Employee employees;
 
 	public int getManagerID() {
 		return managerID;
@@ -43,6 +41,14 @@ public class Manager {
 
 	public void setManagerID(int managerID) {
 		this.managerID = managerID;
+	}
+
+	public Integer getEmployeeId() {
+		return employeeId;
+	}
+
+	public void setEmployeeId(Integer employeeId) {
+		this.employeeId = employeeId;
 	}
 
 	public String getManagerName() {
@@ -61,12 +67,27 @@ public class Manager {
 		this.managerAddress = managerAddress;
 	}
 
+	public String getManagerAge() {
+		return managerAge;
+	}
+
+	public void setManagerAge(String managerAge) {
+		this.managerAge = managerAge;
+	}
+
+	public Employee getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(Employee employees) {
+		this.employees = employees;
+	}
+
 	@Override
 	public String toString() {
-		return "Manager [managerID=" + managerID + ", managerName="
-				+ managerName + ", managerAddress=" + managerAddress
-				+ ", employees=" + employees + "]";
+		return "Manager [managerID=" + managerID + ", employeeId=" + employeeId + ", managerName=" + managerName
+				+ ", managerAddress=" + managerAddress + ", managerAge=" + managerAge + ", employees=" + employees
+				+ "]";
 	}
 
 }
-*/

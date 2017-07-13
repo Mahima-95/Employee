@@ -6,24 +6,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.employee.entity.Managers;
+import com.employee.entity.Manager;
 import com.employee.repository.ManagerRepository;
 
 @Service
 @Transactional
 public class ManagerServiceImpl {
+
 	@Autowired
 	private ManagerRepository managerRepository;
 
-	public List<Managers> findManagerById(Managers manager1) {
-		return managerRepository.findByEmployees(manager1);
+	public List<Manager> findManagerByEmployeeId(Integer id) {
+		return managerRepository.findByEmployeeId(id);
 	}
 
-	public Managers findByManagerID(int managerID) {
-		return managerRepository.findByManagerID(managerID);
+	public Manager findByManagerID(int managerId) {
+		return managerRepository.findOne(managerId);
 	}
-	
-	public Managers addManager(Managers managers) {
+
+	public Manager addManager(Manager managers) {
 		return managerRepository.save(managers);
 	}
 }

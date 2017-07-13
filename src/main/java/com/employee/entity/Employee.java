@@ -5,64 +5,65 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 // no need to use this query for @Query annotation right now
 // @NamedQuery(name = "Employee.findByName", query =
 // "SELECT p FROM Employee p WHERE LOWER(p.empName) = LOWER(?1)")
-@Table(name = "emp")
+@Table(name = "employee")
 public class Employee {
 
 	@Id
-	@Column(name = "emp_id")
+	@Column(name = "employee_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int empId;
+	private int employeeId;
 
-	@Column(name = "emp_name")
-	private String empName;
+	@Column(name = "employee_name")
+	private String employeeName;
 
-	/*
-	 * private Managers managers;
-	 * 
-	 * @OneToOne(mappedBy = "manager_id") public Managers getManagers() { return
-	 * managers; }
-	 * 
-	 * public void setManagers(Managers managers) { this.managers = managers; }
-	 */
+	@Column(name = "employee_address")
+	private String employeeAddress;
 
-	public int getEmpId() {
-		return empId;
+	@Column(name = "employee_age")
+	private Integer employeeAge;
+
+	public int getEmployeeId() {
+		return employeeId;
 	}
 
-	public void setEmpId(int empId) {
-		this.empId = empId;
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
 	}
 
-	public String getEmpName() {
-		return empName;
+	public String getEmployeeName() {
+		return employeeName;
 	}
 
-	public void setEmpName(String empName) {
-		this.empName = empName;
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
 	}
 
-	public Employee() {
-		super();
+	public String getEmployeeAddress() {
+		return employeeAddress;
 	}
 
-	public Employee(String empName) {
-		super();
-		this.empName = empName;
+	public void setEmployeeAddress(String employeeAddress) {
+		this.employeeAddress = employeeAddress;
+	}
+
+	public Integer getEmployeeAge() {
+		return employeeAge;
+	}
+
+	public void setEmployeeAge(Integer employeeAge) {
+		this.employeeAge = employeeAge;
 	}
 
 	@Override
 	public String toString() {
-		return "Employee [empId=" + empId + ", empName=" + empName + "]";
+		return "Employee [employeeId=" + employeeId + ", employeeName=" + employeeName + ", employeeAddress="
+				+ employeeAddress + ", employeeAge=" + employeeAge + "]";
 	}
 
 }
