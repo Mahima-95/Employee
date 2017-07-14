@@ -29,7 +29,7 @@ public class Manager {
 	private String managerAddress;
 
 	@Column(name = "manager_age")
-	private String managerAge;
+	private int managerAge;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "employee_id", referencedColumnName = "employee_Id", updatable = false, insertable = false)
@@ -67,11 +67,11 @@ public class Manager {
 		this.managerAddress = managerAddress;
 	}
 
-	public String getManagerAge() {
+	public int getManagerAge() {
 		return managerAge;
 	}
 
-	public void setManagerAge(String managerAge) {
+	public void setManagerAge(int managerAge) {
 		this.managerAge = managerAge;
 	}
 
